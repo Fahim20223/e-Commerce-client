@@ -6,13 +6,13 @@ export default function Navbar() {
     <>
       <li>
         {" "}
-        <Link href={"/"}>Home</Link>
+        <Link href={"/"}>Home </Link>
       </li>
       <li>
-        <Link href={"/products"}>Products</Link>
+        <Link href={"/products"}>Products </Link>
       </li>
       <li>
-        <Link href={"/"}>Add Us </Link>{" "}
+        <Link href={"/"}>About Us </Link>{" "}
       </li>
       <li>
         <Link href={"/"}>Contact Us</Link>{" "}

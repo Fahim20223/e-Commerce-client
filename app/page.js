@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Feature from "./components/Feature";
 import Services from "./components/Services";
 import Testimonial from "./components/Testimonial";
+import HeroBanner from "./components/Banner";
 // import Banner from "./components/Banner";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
     <div className="">
       <Hero />
       <Feature />
+      <HeroBanner />
       <Services />
       <Testimonial />
     </div>
