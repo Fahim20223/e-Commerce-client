@@ -15,13 +15,30 @@ export default function Register() {
     formState: { errors },
   } = useForm();
 
-  const { createUser, signInWithGoogle } = useAuth();
+  const { createUser, signInWithGoogle, updateUserProfile, setUser } =
+    useAuth();
 
   const handleRegistration = (data) => {
     console.log("after data", data);
     createUser(data.email, data.password)
       .then((result) => {
         console.log(result);
+
+        updateUserProfile({
+          displayName: data.name,
+          photoURL: data.photo,
+        })
+          .then(() => {
+            setUser({
+              ...result.user,
+              displayName: data.name,
+              photoURL: data.photo,
+              // email: data.email,
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
         Swal.fire({
           position: "top-end",
@@ -41,6 +58,8 @@ export default function Register() {
     signInWithGoogle()
       .then((result) => {
         console.log(result);
+        const loggedUser = result.user;
+        setUser(loggedUser);
       })
       .catch((error) => {
         console.log(error);
@@ -71,12 +90,12 @@ export default function Register() {
                 <label className="label">PhotoURL</label>
                 <input
                   type="text"
-                  {...register("photoURL", { required: true })}
+                  {...register("photo", { required: true })}
                   className="input rounded-full focus:border-0 focus:outline-gray-200"
                   placeholder="Photo URL"
                 />
 
-                {errors.photoURL?.type === "required" && (
+                {errors.photo?.type === "required" && (
                   <p className="text-red-500">Photo is required</p>
                 )}
 

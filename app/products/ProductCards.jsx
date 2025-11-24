@@ -28,7 +28,7 @@ export default function ProductCard({ product }) {
         </p>
 
         {/* DESCRIPTION */}
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-indigo-600">
           {product.shortDescription?.slice(0, 70)}...
         </p>
 

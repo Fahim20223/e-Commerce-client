@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const {
@@ -22,13 +22,7 @@ export default function Login() {
     signInUser(data.email, data.password)
       .then((result) => {
         console.log(result);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Successfully Logged In",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        toast.success("Successfully Logged In");
 
         reset();
       })
