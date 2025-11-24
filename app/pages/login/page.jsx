@@ -1,18 +1,50 @@
 "use client";
+import useAuth from "@/app/hooks/useAuth";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
 
 export default function Login() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
+  const { signInUser, signInWithGoogle } = useAuth();
+
   const handleLogin = (data) => {
     console.log("after login", data);
+
+    signInUser(data.email, data.password)
+      .then((result) => {
+        console.log(result);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully Logged In",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGoogleSingIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -65,7 +97,10 @@ export default function Login() {
               </fieldset>
             </form>
 
-            <button className="btn bg-white rounded-full text-black border-[#e5e5e5]">
+            <button
+              onClick={handleGoogleSingIn}
+              className="btn bg-white rounded-full text-black border-[#e5e5e5]"
+            >
               <FcGoogle />
               Login with Google
             </button>

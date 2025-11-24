@@ -5,11 +5,13 @@ import Link from "next/link";
 // import React, { use } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
 
 export default function Register() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -20,6 +22,15 @@ export default function Register() {
     createUser(data.email, data.password)
       .then((result) => {
         console.log(result);
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully Registered",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        reset();
       })
       .catch((error) => {
         console.log(error);
@@ -95,6 +106,9 @@ export default function Register() {
                   className="input rounded-full focus:border-0 focus:outline-gray-200"
                   placeholder="Password"
                 />
+                {errors.password?.type === "required" && (
+                  <p className="text-red-500">Password is required</p>
+                )}
 
                 {errors.password?.type === "minLength" && (
                   <p className="text-red-500">

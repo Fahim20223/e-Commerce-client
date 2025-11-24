@@ -1,7 +1,24 @@
+"use client";
 import Link from "next/link";
 import React from "react";
+import useAuth from "../hooks/useAuth";
+
+import { toast } from "react-toastify";
 
 export default function Navbar() {
+  const { user, signOutUser } = useAuth();
+
+  const handleSingOutUser = () => {
+    signOutUser()
+      .then((result) => {
+        console.log(result);
+        toast.success("Successfully Logged Out");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const links = (
     <>
       <li>
@@ -53,7 +70,15 @@ export default function Navbar() {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <a onClick={handleSingOutUser} className="btn">
+            Logout
+          </a>
+        ) : (
+          <Link href={"/pages/login"} className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

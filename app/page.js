@@ -4,6 +4,7 @@ import Feature from "./components/Feature";
 import Services from "./components/Services";
 import Testimonial from "./components/Testimonial";
 import HeroBanner from "./components/Banner";
+
 // import Banner from "./components/Banner";
 
 export default function Home() {
