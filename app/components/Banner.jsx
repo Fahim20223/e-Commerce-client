@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function HeroBanner() {
   return (
-    <section className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+    <section className="bg-linear-to-r from-purple-600 to-indigo-600 text-white">
       <div className="max-w-6xl mx-auto px-6 py-24 flex flex-col-reverse md:flex-row items-center justify-between gap-8">
         {/* Text Content */}
         <div className="text-center md:text-left space-y-6">
@@ -35,7 +35,7 @@ export default function HeroBanner() {
         {/* Illustration / Image */}
         <div className="w-full md:w-1/2">
           <img
-            src={banner} // Replace with a product or hero illustration
+            src="https://i.ibb.co.com/Z6xksxFP/Screenshot-2025-11-24-103558.png" // Replace with a product or hero illustration
             alt="Ecommerce Banner"
             className="w-full h-auto rounded-xl shadow-xl"
           />
