@@ -4,7 +4,7 @@ import logo from "@/public/Images/cart.png";
 
 export default function Footer() {
   return (
-    <footer className="footer footer-horizontal footer-center bg-primary text-primary-content p-10">
+    <footer className="footer footer-horizontal footer-center bg-primary text-primary-content p-10 mt-6">
       <aside>
         <Image className="w-30 h-26" src={logo} alt="logo" />
         <p className="font-bold">

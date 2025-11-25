@@ -22,13 +22,16 @@ export default function AddProduct() {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://e-commerce-server-opal.vercel.app/api/products",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await res.json();
 
@@ -48,9 +51,9 @@ export default function AddProduct() {
   };
 
   return (
-    <div>
+    <div className="">
       <ProtectedRoute>
-        <div className="flex min-h-screen  items-center">
+        <div className="flex min-h-screen mt-6 items-center">
           <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200">
             <div className="card-body p-6 relative">
               <h1 className="text-3xl font-bold text-center">Add Products</h1>

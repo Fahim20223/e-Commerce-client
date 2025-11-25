@@ -6,7 +6,9 @@ import ProtectedRoute from "@/app/components/ProtectedRoute";
 export default async function ProductDetails({ params }) {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/api/products/${id}`);
+  const res = await fetch(
+    `https://e-commerce-server-opal.vercel.app/api/products/${id}`
+  );
 
   const product = await res.json();
 

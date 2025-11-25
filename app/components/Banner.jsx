@@ -24,7 +24,7 @@ export default function HeroBanner() {
               Show All Products
             </Link>
             <Link
-              href="/add-product"
+              href="/"
               className="px-6 py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-indigo-600 transition"
             >
               Add Product

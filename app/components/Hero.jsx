@@ -5,7 +5,7 @@ export default function Hero() {
     <div className="py-8">
       <section className="py-20 px-6 text-center max-w-4xl mx-auto">
         <h1 className="text-5xl font-bold mb-4 text-gray-900">
-          Welcome to MyShop
+          Welcome to YourStore
         </h1>
         <p className="text-xl mb-6 text-gray-700">
           Discover amazing products and deals every day.

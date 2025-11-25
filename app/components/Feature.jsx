@@ -2,7 +2,9 @@ import React from "react";
 import ProductCard from "../products/ProductCards";
 
 async function fetchFeatures() {
-  const res = await fetch("http://localhost:5000/api/feature");
+  const res = await fetch(
+    "https://e-commerce-server-opal.vercel.app/api/feature"
+  );
   return res.json();
 }
 
