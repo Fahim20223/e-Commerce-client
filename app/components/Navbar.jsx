@@ -2,8 +2,10 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
+import "./Navbar.css";
 
 import { toast } from "react-toastify";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { user, signOutUser } = useAuth();
@@ -22,20 +24,39 @@ export default function Navbar() {
       });
   };
 
+  const pathname = usePathname();
+
   const links = (
     <>
-      <li>
+      <li className="mr-2">
         {" "}
-        <Link href={"/"}>Home </Link>
+        <Link href={"/"} className={pathname === "/" ? "active" : ""}>
+          Home{" "}
+        </Link>
       </li>
-      <li>
-        <Link href={"/products"}>Products </Link>
+      <li className="mr-2">
+        <Link
+          href={"/products"}
+          className={pathname === "/products" ? "active" : ""}
+        >
+          Products{" "}
+        </Link>
       </li>
-      <li>
-        <Link href={"/"}>About Us </Link>{" "}
+      <li className="mr-2">
+        <Link
+          href={"/shop/aboutUs"}
+          className={pathname === "/shop/aboutUs" ? "active" : ""}
+        >
+          About Us{" "}
+        </Link>{" "}
       </li>
-      <li>
-        <Link href={"/"}>Contact Us</Link>{" "}
+      <li className="mr-2">
+        <Link
+          href={"/shop/contactUs"}
+          className={pathname === "/shop/contactUs" ? "active" : ""}
+        >
+          Contact Us
+        </Link>{" "}
       </li>
     </>
   );
@@ -74,11 +95,22 @@ export default function Navbar() {
       </div>
       <div className="navbar-end">
         {user ? (
+          ""
+        ) : (
+          <Link
+            href={"/pages/register"}
+            className="btn mr-5 bg-linear-to-r from-purple-600 to-blue-500 text-white"
+          >
+            register
+          </Link>
+        )}
+
+        {user ? (
           <div className="relative">
             <img
               src={
-                user.photoURL ||
-                "https://cdn-icons-png.flaticon.com/512/456/456212.png"
+                user?.photoURL ||
+                "https://cdn-icons-png.flaticon.com/128/456/456212.png"
               }
               alt="User"
               className="w-13 h-13 rounded-full cursor-pointer object-cover"
@@ -94,22 +126,26 @@ export default function Navbar() {
                 <hr className="my-2" />
 
                 <Link
-                  href="/pages/addProduct"
-                  className="btn btn-sm w-full mb-2"
+                  href="/protected/addProduct"
+                  className={`btn hover:bg-linear-to-r from-purple-600 to-blue-500 btn-sm w-full mb-2 ${
+                    pathname === "/protected/addProduct" ? "active" : ""
+                  }`}
                 >
                   Add Product
                 </Link>
 
                 <Link
-                  href="/pages/manageProducts"
-                  className="btn btn-sm w-full mb-2"
+                  href="/protected/manageProducts"
+                  className={`btn hover:bg-linear-to-r from-purple-600 to-blue-500 btn-sm w-full mb-2 ${
+                    pathname === "/protected/manageProducts" ? "active" : ""
+                  }`}
                 >
                   Manage Products
                 </Link>
 
                 <button
                   onClick={handleSingOutUser}
-                  className="btn btn-primary btn-sm w-full"
+                  className="btn hover:bg-linear-to-r from-purple-600 to-blue-500 btn-sm w-full"
                 >
                   Logout
                 </button>
@@ -117,7 +153,10 @@ export default function Navbar() {
             )}
           </div>
         ) : (
-          <Link href="/pages/login" className="btn">
+          <Link
+            href="/pages/login"
+            className="btn text-white bg-linear-to-r from-purple-600 to-blue-500"
+          >
             Login
           </Link>
         )}

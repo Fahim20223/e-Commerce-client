@@ -1,4 +1,5 @@
 "use client";
+import { auth } from "@/app/firebase/Firebase.config";
 import useAuth from "@/app/hooks/useAuth";
 // import useAuth from "@/app/hooks/useAuth";
 import Link from "next/link";
@@ -18,40 +19,43 @@ export default function Register() {
   const { createUser, signInWithGoogle, updateUserProfile, setUser } =
     useAuth();
 
-  const handleRegistration = (data) => {
-    console.log("after data", data);
-    createUser(data.email, data.password)
-      .then((result) => {
-        console.log(result);
+  const handleRegistration = async (data) => {
+    try {
+      console.log("after data", data);
 
-        updateUserProfile({
-          displayName: data.name,
-          photoURL: data.photo,
-        })
-          .then(() => {
-            setUser({
-              ...result.user,
-              displayName: data.name,
-              photoURL: data.photo,
-              // email: data.email,
-            });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+      // Create user
+      const result = await createUser(data.email, data.password);
+      console.log(result);
 
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Successfully Registered",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        reset();
-      })
-      .catch((error) => {
-        console.log(error);
+      // Update profile
+      await updateUserProfile({
+        displayName: data.name,
+        photoURL: data.photoURL,
       });
+
+      // Reload user to get updated profile
+      await result.user.reload();
+
+      // Set user with the fresh data
+      setUser(auth.currentUser);
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Successfully Registered",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      reset();
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Registration Failed",
+        text: error.message,
+      });
+    }
   };
 
   const handleGoogleSignIn = () => {
@@ -74,7 +78,7 @@ export default function Register() {
             <h1 className="text-3xl font-bold text-center">Register</h1>
             <form onSubmit={handleSubmit(handleRegistration)}>
               <fieldset className="fieldset">
-                {/* email field */}
+                {/* name field */}
                 <label className="label">Name</label>
                 <input
                   type="text"
@@ -90,12 +94,12 @@ export default function Register() {
                 <label className="label">PhotoURL</label>
                 <input
                   type="text"
-                  {...register("photo", { required: true })}
+                  {...register("photoURL", { required: true })}
                   className="input rounded-full focus:border-0 focus:outline-gray-200"
                   placeholder="Photo URL"
                 />
 
-                {errors.photo?.type === "required" && (
+                {errors.photoURL?.type === "required" && (
                   <p className="text-red-500">Photo is required</p>
                 )}
 

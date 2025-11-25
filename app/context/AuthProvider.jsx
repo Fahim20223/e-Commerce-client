@@ -36,10 +36,17 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  // const updateUserProfile = (updatedData) => {
+  //   return updateProfile(auth.currentUser, {
+  //     updatedData,
+  //   });
+  // };
+
+  // const updateUserProfile = ({ displayName, photoURL }) =>
+  //   updateProfile(auth.currentUser, { displayName, photoURL });
+
   const updateUserProfile = (updatedData) => {
-    return updateProfile(auth.currentUser, {
-      updatedData,
-    });
+    return updateProfile(auth.currentUser, updatedData); // ✅ Pass directly
   };
 
   useEffect(() => {

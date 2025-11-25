@@ -1,7 +1,8 @@
 "use client";
 import useAuth from "@/app/hooks/useAuth";
 import Link from "next/link";
-import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
@@ -14,7 +15,19 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const { signInUser, signInWithGoogle } = useAuth();
+  const router = useRouter();
+
+  const { signInUser, signInWithGoogle, user } = useAuth();
+
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect") || "/"; // default home
+
+  // Redirect automatically if already logged in
+  useEffect(() => {
+    if (user) {
+      router.push(redirectPath);
+    }
+  }, [user, router, redirectPath]);
 
   const handleLogin = (data) => {
     console.log("after login", data);
