@@ -3,13 +3,14 @@ import ProtectedRoute from "@/app/components/ProtectedRoute";
 import useAuth from "@/app/hooks/useAuth";
 import React from "react";
 import Swal from "sweetalert2";
-// import { Typewriter } from "react-simple-typewriter";
 
 export default function AddProduct() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!user) return; // Safety check
 
     const formData = {
       image: e.target.photo.value,
@@ -18,7 +19,8 @@ export default function AddProduct() {
       fullDescription: e.target.fullDescription.value,
       price: e.target.price.value,
       createdAt: new Date(),
-      userEmail: user?.email,
+      userEmail: user.email,
+      userName: user.displayName || "",
     };
 
     try {
@@ -26,9 +28,7 @@ export default function AddProduct() {
         "https://e-commerce-server-opal.vercel.app/api/products",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         }
       );
@@ -39,125 +39,118 @@ export default function AddProduct() {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Your work has been saved",
+          title: "Product added successfully",
           showConfirmButton: false,
           timer: 1500,
         });
         e.target.reset();
       }
     } catch (error) {
-      console.log("Error adding product:", error);
+      console.error("Error adding product:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to add product",
+      });
     }
   };
 
+  if (loading) return <p className="text-center mt-10">Loading...</p>;
+
   return (
-    <div className="">
-      <ProtectedRoute>
-        <div className="flex min-h-screen mt-6 items-center">
-          <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200">
-            <div className="card-body p-6 relative">
-              <h1 className="text-3xl font-bold text-center">Add Products</h1>
-              <form onSubmit={handleSubmit}>
-                <fieldset className="fieldset">
-                  {/* email field */}
-                  <div>
-                    <label className="label font-medium mb-1">User Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                      defaultValue={user?.displayName}
-                      readOnly
-                    />
-                  </div>
-                  {/* Email Field */}
-                  <div>
-                    <label className="label font-medium mb-1">User Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                      defaultValue={user?.email}
-                      readOnly
-                    />
-                  </div>
-                  {/* Photo URL */}
-                  <div>
-                    <label className="label font-medium">Photo URL</label>
-                    <input
-                      type="url"
-                      name="photo"
-                      required
-                      className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                      placeholder="https://example.com/image.jpg"
-                    />
-                  </div>
+    <ProtectedRoute>
+      <div className="flex min-h-screen mt-6 items-center justify-center">
+        <div className="card bg-base-100 w-full max-w-sm shadow-2xl border border-gray-200">
+          <div className="card-body p-6">
+            <h1 className="text-3xl font-bold text-center">Add Product</h1>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label className="label">User Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  defaultValue={user?.displayName || ""}
+                  readOnly
+                  className="input w-full rounded-full focus:outline-gray-200"
+                />
+              </div>
 
-                  {/* Title Field */}
-                  <div>
-                    <label className="label font-medium">Title</label>
-                    <input
-                      type="text"
-                      name="title"
-                      required
-                      className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                      placeholder="Enter title"
-                    />
-                  </div>
+              <div className="mb-3">
+                <label className="label">User Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  defaultValue={user?.email || ""}
+                  readOnly
+                  className="input w-full rounded-full focus:outline-gray-200"
+                />
+              </div>
 
-                  {/*Short Description Textarea */}
-                  <div className="mt-2">
-                    <label className="label font-medium">
-                      Short-Description
-                    </label>
-                    <textarea
-                      name="shortDescription"
-                      required
-                      rows="3"
-                      className="py-3 px-1 textarea w-full rounded-2xl focus:border-0  focus:outline-gray-200 h-[50px] "
-                      placeholder="Enter Full description"
-                    ></textarea>
-                  </div>
+              <div className="mb-3">
+                <label className="label">Photo URL</label>
+                <input
+                  type="url"
+                  name="photo"
+                  required
+                  placeholder="https://example.com/image.jpg"
+                  className="input w-full rounded-full focus:outline-gray-200"
+                />
+              </div>
 
-                  {/* Price */}
+              <div className="mb-3">
+                <label className="label">Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  required
+                  placeholder="Enter title"
+                  className="input w-full rounded-full focus:outline-gray-200"
+                />
+              </div>
 
-                  <div>
-                    <label className="label font-medium">Price</label>
-                    <input
-                      type="number"
-                      name="price"
-                      required
-                      className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                      placeholder="Price"
-                    />
-                  </div>
+              <div className="mb-3">
+                <label className="label">Short Description</label>
+                <textarea
+                  name="shortDescription"
+                  required
+                  rows="3"
+                  placeholder="Enter short description"
+                  className="textarea w-full rounded-2xl focus:outline-gray-200"
+                />
+              </div>
 
-                  {/* Description Textarea */}
-                  <div className="mt-2">
-                    <label className="label font-medium">
-                      Full-Description
-                    </label>
-                    <textarea
-                      name="fullDescription"
-                      required
-                      rows="3"
-                      className="py-3 px-1 textarea w-full rounded-2xl focus:border-0  focus:outline-gray-200 h-[250px] "
-                      placeholder="Enter Full description"
-                    ></textarea>
-                  </div>
+              <div className="mb-3">
+                <label className="label">Price</label>
+                <input
+                  type="number"
+                  name="price"
+                  required
+                  placeholder="Enter price"
+                  className="input w-full rounded-full focus:outline-gray-200"
+                />
+              </div>
 
-                  <button
-                    type="submit"
-                    className="btn text-white mt-4 rounded-full bg-linear-to-r from-purple-600 to-blue-500"
-                  >
-                    Add The Product
-                  </button>
-                </fieldset>
-              </form>
-            </div>
+              <div className="mb-3">
+                <label className="label">Full Description</label>
+                <textarea
+                  name="fullDescription"
+                  required
+                  rows="6"
+                  placeholder="Enter full description"
+                  className="textarea w-full rounded-2xl focus:outline-gray-200"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn text-white mt-4 w-full rounded-full bg-gradient-to-r from-purple-600 to-blue-500"
+              >
+                Add Product
+              </button>
+            </form>
           </div>
         </div>
-      </ProtectedRoute>
-    </div>
+      </div>
+    </ProtectedRoute>
   );
 }
