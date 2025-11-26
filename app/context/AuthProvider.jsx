@@ -10,7 +10,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../firebase/Firebase.config";
+import { auth } from "../../lib/Firebase.config";
 import { AuthContext } from "./AuthContext";
 // import { auth } from "../../Firebase/Firebase.config";
 

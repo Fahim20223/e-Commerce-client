@@ -1,5 +1,5 @@
 "use client";
-import { auth } from "@/app/firebase/Firebase.config";
+import { auth } from "@/lib/Firebase.config";
 import useAuth from "@/app/hooks/useAuth";
 // import useAuth from "@/app/hooks/useAuth";
 import Link from "next/link";
