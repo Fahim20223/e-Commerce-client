@@ -45,8 +45,8 @@ export default function Services() {
             <div className="h-20 w-20 mx-auto mb-4 rounded-full">
               <img className="rounded-full" src={service.image} alt="images" />
             </div>
-            <h3 className="font-semibold">{service.title}</h3>
-            <p className="text-gray-500 text-sm mt-2">{service.description}</p>
+            <h3 className="font-semibold text-gray-600">{service.title}</h3>
+            <p className="text-gray-600 text-sm mt-2">{service.description}</p>
           </div>
         ))}
       </div>

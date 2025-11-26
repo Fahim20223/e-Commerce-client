@@ -17,10 +17,7 @@ export default function ProductCard({ product }) {
         {/* TITLE */}
         <h2 className="card-title">{product.title}</h2>
 
-        {/* CATEGORY */}
-        <h2 className="badge text-xs badge-secondary rounded-full">
-          {product.category}
-        </h2>
+        <h2 className="badge text-xs badge-secondary rounded-full"></h2>
 
         {/* PRICE */}
         <p className="text-lg font-semibold text-primary mt-2">

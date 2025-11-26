@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "@/app/hooks/useAuth";
 import ProtectedRoute from "@/app/components/ProtectedRoute";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { Typewriter } from "react-simple-typewriter";
 import { Fade } from "react-awesome-reveal";
 
@@ -106,7 +106,7 @@ export default function ManageProducts() {
               <span style={{ fontWeight: "bold" }}>
                 <Typewriter
                   words={[" You have not added any artwork yet !"]}
-                  loop={5}
+                  loop={3}
                   cursor
                   cursorStyle="_"
                   typeSpeed={70}
