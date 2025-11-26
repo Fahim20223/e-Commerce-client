@@ -76,6 +76,7 @@ export default function Login() {
                 className="input rounded-full focus:border-0 focus:outline-gray-200"
                 placeholder="Password"
               />
+              {/* my client  */}
               {errors.password && (
                 <p className="text-red-500">Please Enter Your Password</p>
               )}
