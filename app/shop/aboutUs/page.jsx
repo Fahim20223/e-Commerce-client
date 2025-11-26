@@ -1,6 +1,6 @@
 export default function AboutUs() {
   return (
-    <section className="min-h-[70vh] bg-white py-24">
+    <section className="min-h-[70vh] py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* LEFT: IMAGE SIDE */}
@@ -19,9 +19,9 @@ export default function AboutUs() {
 
           {/* RIGHT: TEXT SIDE */}
           <div>
-            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
+            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-600">
               We Build
-              <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                 {" "}
                 Ecommerce Experiences
               </span>{" "}
@@ -66,7 +66,7 @@ export default function AboutUs() {
 
             {/* THEMEFOREST TRUST BADGE LINE */}
             <div className="mt-10 border-l-4 border-purple-600 pl-6">
-              <p className="text-gray-700 text-lg italic">
+              <p className="text-gray-600 text-lg italic">
                 “Our mission is simple — deliver quality, build trust, and make
                 online shopping feel effortless.”
               </p>

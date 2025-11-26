@@ -1,46 +1,29 @@
-// components/HeroBanner.jsx
 "use client";
-import banner from "@/public/Images/ss4.png";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-import Link from "next/link";
+import banner1 from "@/public/Images/banner1.png";
+import banner2 from "@/public/Images/banner2.png";
+import banner3 from "@/public/Images/banner3.png";
+import Image from "next/image";
 
 export default function HeroBanner() {
   return (
-    <section className="bg-linear-to-r from-purple-600 to-indigo-600 text-white">
-      <div className="max-w-6xl mx-auto px-6 py-24 flex flex-col-reverse md:flex-row items-center justify-between gap-8">
-        {/* Text Content */}
-        <div className="text-center md:text-left space-y-6">
-          <h1 className="text-4xl sm:text-5xl font-extrabold">
-            Upgrade Your Style Today
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-200">
-            Explore premium products with unbeatable deals and fast delivery.
-          </p>
-          <div className="flex justify-center md:justify-start gap-4">
-            <Link
-              href="/products"
-              className="px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition"
-            >
-              Show All Products
-            </Link>
-            <Link
-              href="/"
-              className="px-6 py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-indigo-600 transition"
-            >
-              Add Product
-            </Link>
-          </div>
+    <div className="max-w-6xl mx-auto py-10">
+      <Carousel autoPlay={true} interval={2000} infiniteLoop={true}>
+        <div>
+          <Image src={banner1} alt="banner1" className="rounded-3xl" />
+          {/* <p className="legend">Legend 1</p> */}
         </div>
-
-        {/* Illustration / Image */}
-        <div className="w-full md:w-1/2">
-          <img
-            src="https://i.ibb.co.com/Z6xksxFP/Screenshot-2025-11-24-103558.png" // Replace with a product or hero illustration
-            alt="Ecommerce Banner"
-            className="w-full h-auto rounded-xl shadow-xl"
-          />
+        <div>
+          <Image src={banner2} alt="banner2" className="rounded-2xl" />
+          {/* <p className="legend">Legend 2</p> */}
         </div>
-      </div>
-    </section>
+        <div>
+          <Image src={banner3} alt="banner3" className="rounded-3xl" />
+          {/* <p className="legend">Legend 3</p> */}
+        </div>
+      </Carousel>
+    </div>
   );
 }

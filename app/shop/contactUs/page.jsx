@@ -40,7 +40,7 @@ export default function ContactUs() {
         </div>
 
         {/* Contact Form */}
-        <div className="bg-white shadow-2xl border rounded-2xl">
+        <div className="bg-white shadow-2xl rounded-2xl">
           <form
             onSubmit={handleForm}
             className="space-y-6 px-6 py-8 rounded-2xl"

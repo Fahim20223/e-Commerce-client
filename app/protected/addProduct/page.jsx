@@ -106,7 +106,7 @@ export default function AddProduct() {
                   </div>
 
                   {/*Short Description Textarea */}
-                  <div>
+                  <div className="mt-2">
                     <label className="label font-medium">
                       Short-Description
                     </label>
@@ -114,8 +114,8 @@ export default function AddProduct() {
                       name="shortDescription"
                       required
                       rows="3"
-                      className="input w-full rounded-full focus:border-0 focus:outline-gray-200 textarea"
-                      placeholder="Enter Short description"
+                      className="py-3 px-1 textarea w-full rounded-2xl focus:border-0  focus:outline-gray-200 h-[50px] "
+                      placeholder="Enter Full description"
                     ></textarea>
                   </div>
 
@@ -141,7 +141,7 @@ export default function AddProduct() {
                       name="fullDescription"
                       required
                       rows="3"
-                      className="py-3 px-1 textarea w-full rounded-2xl focus:border-0  focus:outline-gray-200 h-[250px] border"
+                      className="py-3 px-1 textarea w-full rounded-2xl focus:border-0  focus:outline-gray-200 h-[250px] "
                       placeholder="Enter Full description"
                     ></textarea>
                   </div>

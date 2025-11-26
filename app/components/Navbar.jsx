@@ -88,7 +88,10 @@ export default function Navbar() {
             {links}
           </ul>
         </div>
-        <Link href={"/"} className="btn btn-ghost text-xl">
+        <Link
+          href={"/"}
+          className="bg-linear-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent text-2xl font-bold"
+        >
           YourStore
         </Link>
       </div>
@@ -115,9 +118,11 @@ export default function Navbar() {
                 "https://cdn-icons-png.flaticon.com/128/456/456212.png"
               }
               alt="User"
-              className="w-13 h-13 rounded-full cursor-pointer object-cover"
+              className="w-16 h-16 rounded-full cursor-pointer object-cover border-4 border-purple-600"
               onClick={() => setOpenDropdown(!openDropdown)}
             />
+            {/* Active green dot */}
+            <span className="absolute top-1 right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white shadow-md"></span>
 
             {openDropdown && (
               <div className="absolute right-0 mt-3 bg-base-100 shadow-lg rounded-md w-40 p-2 z-50">

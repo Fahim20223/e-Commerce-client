@@ -40,7 +40,7 @@ export default function Services() {
         {services.map((service) => (
           <div
             key={service.id}
-            className="bg-white p-6 text-center rounded-lg shadow-lg hover:shadow-xl transition "
+            className="bg-white border-2 border-purple-600 p-6 text-center rounded-lg shadow-lg hover:shadow-xl transition "
           >
             <div className="h-20 w-20 mx-auto mb-4 rounded-full">
               <img className="rounded-full" src={service.image} alt="images" />
