@@ -4,7 +4,7 @@ A modern, full-featured eCommerce application built with Next.js 14+ (App Router
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://yourstore-demo.vercel.app)
+[View Live Demo](https://e-commerce-client-nn7p.vercel.app/)
 
 ## 📋 Project Description
 
