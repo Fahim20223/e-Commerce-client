@@ -21,7 +21,7 @@ export default function Login() {
   // Redirect back after login if already logged in
   useEffect(() => {
     if (user) {
-      router.back(); // go back to the previous page
+      router.push("/"); // go back to the previous page
     }
   }, [user, router]);
 
@@ -30,7 +30,7 @@ export default function Login() {
       .then(() => {
         toast.success("Successfully Logged In");
         reset();
-        router.back(); // go back after login
+        router.push("/"); // go back after login
       })
       .catch((error) => {
         console.log(error);
@@ -42,7 +42,7 @@ export default function Login() {
     signInWithGoogle()
       .then(() => {
         toast.success("Successfully Logged In with Google");
-        router.back(); // go back after login
+        router.push("/"); // go back after login
       })
       .catch((error) => {
         console.log(error);

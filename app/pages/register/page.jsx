@@ -7,8 +7,10 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -48,6 +50,8 @@ export default function Register() {
       });
 
       reset();
+
+      router.push("/");
     } catch (error) {
       console.log(error);
       Swal.fire({
@@ -64,6 +68,8 @@ export default function Register() {
         console.log(result);
         const loggedUser = result.user;
         setUser(loggedUser);
+
+        router.push("/");
       })
       .catch((error) => {
         console.log(error);
