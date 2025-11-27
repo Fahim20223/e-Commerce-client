@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCard from "../products/ProductCards";
 
+export const dynamic = "force-dynamic";
 async function fetchFeatures() {
   const res = await fetch(
     "https://e-commerce-server-opal.vercel.app/api/feature"
