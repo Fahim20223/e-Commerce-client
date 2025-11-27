@@ -54,8 +54,9 @@ export default function Footer() {
           </nav>
         </div>
       </div>
+      <hr />
       <p className="text-center mt-8">
-        Copyright © {new Date().getFullYear()} - All right reserved
+        YourStore © {new Date().getFullYear()} - All right reserved
       </p>
     </div>
   );
