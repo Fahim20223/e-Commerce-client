@@ -11,7 +11,7 @@ export default function Hero() {
 
       <section className="relative z-10 py-32 px-6 text-center max-w-4xl mx-auto">
         <h1 className="text-6xl md:text-7xl font-extrabold mb-6 drop-shadow-lg">
-          Welcome to <span className="text-yellow-300">YourStore</span>
+          Welcome to <span className="text-yellow-300">GizmoGrid</span>
         </h1>
         <p className="text-xl md:text-2xl mb-10 text-white/90 drop-shadow-sm">
           Discover amazing products and deals every day. Shop smart, shop fast,
