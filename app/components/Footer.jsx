@@ -6,44 +6,96 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <div className="bg-linear-to-r from-purple-600 to-blue-500 text-white p-10 font-semibold">
-      <div className="footer sm:footer-horizontal ">
-        <div className="flex flex-col space-y-5 md:flex-row justify-around w-full mx-auto">
-          <nav className="flex flex-col space-y-3">
-            <h6 className="text-black text-lg">Services</h6>
-            <a className="link link-hover">Branding</a>
-            <a className="link link-hover">Design</a>
-            <a className="link link-hover">Marketing</a>
-            <a className="link link-hover">Advertisement</a>
-          </nav>
-          <nav className="flex flex-col space-y-3">
-            <h6 className="text-black text-lg">Company</h6>
-            <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
-            <a className="link link-hover">Jobs</a>
-            <a className="link link-hover">Press kit</a>
-          </nav>
-          <nav className="flex flex-col space-y-3">
-            <h6 className="text-black text-lg">Social</h6>
-            <div className="grid grid-flow-col gap-4">
-              <FaGithub size={26} />
-              <FaXTwitter size={27} />
-              <a>
+    <footer className="bg-linear-to-r from-purple-700 to-blue-600 text-white py-10 font-medium">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Footer Links */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Services */}
+          <div>
+            <h6 className="text-lg font-bold mb-4">Services</h6>
+            <ul className="space-y-2">
+              <li>
+                <a className="hover:underline" href="#">
+                  Branding
+                </a>
+              </li>
+              <li>
+                <a className="hover:underline" href="#">
+                  Design
+                </a>
+              </li>
+              <li>
+                <a className="hover:underline" href="#">
+                  Marketing
+                </a>
+              </li>
+              <li>
+                <a className="hover:underline" href="#">
+                  Advertisement
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h6 className="text-lg font-bold mb-4">Company</h6>
+            <ul className="space-y-2">
+              <li>
+                <a className="hover:underline" href="#">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a className="hover:underline" href="#">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a className="hover:underline" href="#">
+                  Jobs
+                </a>
+              </li>
+              <li>
+                <a className="hover:underline" href="#">
+                  Press Kit
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h6 className="text-lg font-bold mb-4">Follow Us</h6>
+            <div className="flex space-x-4">
+              <a href="#" aria-label="GitHub" className="hover:text-gray-300">
+                <FaGithub size={26} />
+              </a>
+              <a
+                href="#"
+                aria-label="X Twitter"
+                className="hover:text-gray-300"
+              >
+                <FaXTwitter size={26} />
+              </a>
+              {/* YouTube */}
+              <a href="#" aria-label="YouTube" className="hover:text-gray-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="26"
+                  height="26"
                   viewBox="0 0 24 24"
                   className="fill-current"
                 >
                   <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
                 </svg>
               </a>
-              <a>
+              {/* Facebook */}
+              <a href="#" aria-label="Facebook" className="hover:text-gray-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="26"
+                  height="26"
                   viewBox="0 0 24 24"
                   className="fill-current"
                 >
@@ -51,13 +103,18 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-          </nav>
+          </div>
         </div>
+
+        {/* Divider */}
+        <hr className="border-gray-300 my-8" />
+
+        {/* Brand & Copyright */}
+        <p className="text-center text-white text-sm">
+          <span className="font-bold text-lg">GizmoGrid </span> ©{" "}
+          {new Date().getFullYear()} - All rights reserved
+        </p>
       </div>
-      <hr />
-      <p className="text-center mt-8">
-        YourStore © {new Date().getFullYear()} - All right reserved
-      </p>
-    </div>
+    </footer>
   );
 }
