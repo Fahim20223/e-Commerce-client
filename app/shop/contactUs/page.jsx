@@ -34,7 +34,7 @@ export default function ContactUs() {
 
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-gray-900">✉️ Email</h3>
-              <p className="text-gray-600">support@yourstore.com</p>
+              <p className="text-gray-600">support@gizmogrid.com</p>
             </div>
           </div>
         </div>

@@ -92,7 +92,7 @@ export default function Navbar() {
           href={"/"}
           className="bg-linear-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent text-2xl font-bold"
         >
-          YourStore
+          GizmoGrid
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

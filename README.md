@@ -1,6 +1,6 @@
-# YourStore - Next.js eCommerce Platform
+# GizmoGrid - Next.js eCommerce Platform
 
-A modern, full-featured eCommerce application built with Next.js 14+ (App Router) and NextAuth.js authentication. YourStore provides a seamless shopping experience with protected routes for product management, responsive design, and a polished user interface.
+A modern, full-featured eCommerce application built with Next.js 14+ (App Router) and NextAuth.js authentication. GizmoGrid provides a seamless shopping experience with protected routes for product management, responsive design, and a polished user interface.
 
 ## 🚀 Live Demo
 
@@ -8,7 +8,7 @@ A modern, full-featured eCommerce application built with Next.js 14+ (App Router
 
 ## 📋 Project Description
 
-YourStore is a comprehensive eCommerce platform that allows users to browse products, view detailed product information, and manage their own product listings through a protected dashboard. The application features:
+GizmoGrid is a comprehensive eCommerce platform that allows users to browse products, view detailed product information, and manage their own product listings through a protected dashboard. The application features:
 
 - **Public Access**: Landing page, product listing, and product details
 - **Protected Access**: Add and manage products (requires authentication)
@@ -64,7 +64,7 @@ YourStore is a comprehensive eCommerce platform that allows users to browse prod
 ## 📁 Project Structure
 
 ```
-yourstore/
+gizmogrid/
 ├── app/
 │   ├── pages/
 │   │   ├── login/
@@ -111,8 +111,8 @@ yourstore/
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/yourstore.git
-cd yourstore
+git clone https://github.com/yourusername/gizmogrid.git
+cd gizmogrid
 ```
 
 ### Step 2: Install Dependencies
@@ -356,7 +356,7 @@ Contributions are welcome! Please follow these steps:
 If you have any questions or need help, please:
 
 - Open an issue on GitHub
-- Email: support@yourstore.com
+- Email: support@gizmogrid.com
 - Join our Discord community
 
 ---
